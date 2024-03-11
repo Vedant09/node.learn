@@ -1,18 +1,20 @@
 const http = require('node:http');
 const url = require('node:url');
 const fs = require('node:fs');
+var slugify = require('slugify')
 
 const replaceDynamic = require('./modules/replaceDynamic')
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
-
 const data = fs.readFileSync('./starter/dev-data/data.json', 'utf-8')
 const tempOverview = fs.readFileSync('./starter/templates/overview.html', 'utf-8')
 const tempProducts = fs.readFileSync('./starter/templates/product.html', 'utf-8')
 const tempCards = fs.readFileSync('./starter/templates/cards.html', 'utf-8')
 const dataObj = JSON.parse(data)
+const slugs = dataObj.map(el => slugify(el.productName,{lower : true}));
+console.log(slugs)
  
 
 const server = http.createServer((req, res) => {
