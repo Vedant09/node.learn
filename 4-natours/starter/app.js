@@ -7,7 +7,7 @@ const userRouter = require('./Routes/userRoutes');
 const app = express();
 
 //third part middleware
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 
 //builtin middleware
 app.use(express.json());
